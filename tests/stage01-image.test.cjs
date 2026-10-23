@@ -1,0 +1,8 @@
+const assert=require('node:assert/strict'),sharp=require("sharp"),{guideImage,checkWallEvidence}=require('../stage01-image.cjs'),{convertStructure,expandPlanStructure}=require('../stage01-vision.cjs');
+(async()=>{
+ const image=await sharp(Buffer.from('<svg width="400" height="300"><rect width="400" height="300" fill="white"/><path d="M30 50H350" stroke="black" stroke-width="8"/></svg>')).png().toBuffer(),input={image:'data:image/png;base64,'+image.toString('base64'),width:400,height:300};
+ const guide=await guideImage(input),meta=await sharp(Buffer.from(guide.split(',')[1],'base64')).metadata();assert.equal(meta.width,400);assert.equal(meta.height,300);assert.equal(input.image,'data:image/png;base64,'+image.toString('base64'));await assert.rejects(guideImage({...input,width:401}),/不符/);
+ const r=convertStructure(expandPlanStructure({scale:10,walls:[['real',30,50,350,50,8],['invented',30,220,350,220,8]],openings:[],rooms:[],columns:[]}),input);await checkWallEvidence(r,input);assert.deepEqual(r.structure.walls.map(w=>w.id),['real']);assert.equal(r.unresolved[0].rejectedWallId,'invented');assert.equal(r.unresolved[0].coordinateSpace,'source-pixels');
+ const gray=await sharp(image).greyscale().png().toBuffer(),grayInput={...input,image:'data:image/png;base64,'+gray.toString('base64')},grayResult=convertStructure(expandPlanStructure({scale:10,walls:[['real',30,50,350,50,8]],openings:[],rooms:[],columns:[]}),grayInput);await checkWallEvidence(grayResult,grayInput);assert.equal(grayResult.structure.walls.length,1);
+ console.log('Image evidence: unchanged source/pixel dimensions, coordinate guides, image-size mismatch and unsupported wall rejection passed.');
+})().catch(e=>{console.error(e);process.exitCode=1;});

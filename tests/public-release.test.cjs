@@ -1,0 +1,7 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const {portableCodec}=require('../local-secret-codec.cjs'),C=require('../core.js'),{analyseFurniture}=require('../furniture-photo-server.cjs'),{extractScene}=require('../scene-extraction-server.cjs');
+const dir=fs.mkdtempSync(path.join(require('node:os').tmpdir(),'secret-')),codec=portableCodec(dir),secret='test-only-secret-'+crypto.randomUUID(),encrypted=codec.protect(secret);
+assert(!encrypted.includes(secret));assert.notEqual(codec.protect(secret),encrypted);assert.equal(portableCodec(dir).unprotect(encrypted),secret);
+const bad=encrypted.slice(0,-8)+'AAAAAAAA';assert.throws(()=>codec.unprotect(bad));if(process.platform!=='win32')assert.equal(fs.statSync(path.join(dir,'secret-key')).mode&0o777,0o600);
+const p=C.validate(JSON.parse(fs.readFileSync(path.join(__dirname,'../examples/studio-35m2.json'))));assert.equal(p.furniture.length,26);assert.equal(p.structure.rooms.length,3);assert.equal(Object.keys(p.assets).length,5);assert.equal(p.source,null);
+(async()=>{const image='data:image/png;base64,'+require('../vision-test-image.cjs').testImage().toString('base64');assert.equal((await analyseFurniture({image},{})).provider,'unavailable');assert.equal((await extractScene({image},{})).items.length,0);console.log('Public demo, portable authenticated encryption, no private image dependencies and honest unconfigured API responses passed.');})().catch(e=>{console.error(e);process.exitCode=1;});

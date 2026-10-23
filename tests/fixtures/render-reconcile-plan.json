@@ -1,0 +1,662 @@
+{
+  "version": 2,
+  "title": "效果图家具还原测试",
+  "structure": {
+    "height": 2800,
+    "walls": [
+      {
+        "id": "ai-wall-1",
+        "a": [
+          363.5,
+          2296.4
+        ],
+        "b": [
+          363.5,
+          8904
+        ],
+        "thickness": 252.6,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.65
+      },
+      {
+        "id": "ai-wall-2",
+        "a": [
+          6621.2,
+          2296.4
+        ],
+        "b": [
+          6621.2,
+          8904
+        ],
+        "thickness": 252.6,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.65
+      },
+      {
+        "id": "ai-wall-3",
+        "a": [
+          363.5,
+          3982.3
+        ],
+        "b": [
+          3474.8,
+          3982.3
+        ],
+        "thickness": 157.9,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.65
+      },
+      {
+        "id": "ai-wall-4",
+        "a": [
+          363.5,
+          8904
+        ],
+        "b": [
+          6621.2,
+          8904
+        ],
+        "thickness": 252.6,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.65
+      },
+      {
+        "id": "ai-wall-5",
+        "a": [
+          363.5,
+          2296.4
+        ],
+        "b": [
+          6621.2,
+          2296.4
+        ],
+        "thickness": 265.1,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.65
+      },
+      {
+        "id": "ai-wall-6",
+        "a": [
+          5589.5,
+          7859.1
+        ],
+        "b": [
+          6621.2,
+          7859.1
+        ],
+        "thickness": 173.5,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.65
+      },
+      {
+        "id": "ai-wall-7",
+        "a": [
+          3474.8,
+          2296.4
+        ],
+        "b": [
+          3474.8,
+          8904
+        ],
+        "thickness": 164.1,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.65
+      },
+      {
+        "id": "wall-bba3b6d6-4952-4780-82da-ee1498b9c48f",
+        "a": [
+          1610,
+          2790
+        ],
+        "b": [
+          1599.524719919069,
+          2789.7478873626733
+        ],
+        "thickness": 200,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false
+      },
+      {
+        "id": "wall-99601f3f-9b75-4db2-9917-a7c0129f7d56",
+        "a": [
+          363.5,
+          2860
+        ],
+        "b": [
+          1508.997660386445,
+          2867.654511596301
+        ],
+        "thickness": 200,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false
+      },
+      {
+        "id": "wall-fb16a89c-dcbb-49fb-b9ba-b4bd064b2ebc",
+        "a": [
+          1409.8846675356413,
+          2293.6595032912505
+        ],
+        "b": [
+          1409.7528143543598,
+          2866.991331870059
+        ],
+        "thickness": 200,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false
+      },
+      {
+        "id": "wall-7f9c0f84-e8c1-4d9f-af23-9e90a42b2ce0",
+        "a": [
+          6621.2,
+          2796.557958984375
+        ],
+        "b": [
+          5999.760938084817,
+          2803.860890018115
+        ],
+        "thickness": 200,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false
+      },
+      {
+        "id": "wall-575a35b4-bc0a-4d6b-8cff-7346dbb686a1",
+        "a": [
+          6000,
+          2900
+        ],
+        "b": [
+          6010,
+          2370
+        ],
+        "thickness": 200,
+        "height": 2800,
+        "bearing": "unknown",
+        "reviewed": false
+      }
+    ],
+    "openings": [
+      {
+        "id": "ai-window-1",
+        "wallId": "ai-wall-4",
+        "type": "window",
+        "offset": 741.7,
+        "width": 2273.7,
+        "height": 1500,
+        "sill": 900,
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.905
+      },
+      {
+        "id": "ai-door-2",
+        "wallId": "ai-wall-7",
+        "type": "door",
+        "offset": 798.3,
+        "width": 678.9,
+        "height": 2100,
+        "sill": 0,
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.843,
+        "open": true
+      },
+      {
+        "id": "ai-door-3",
+        "wallId": "ai-wall-5",
+        "type": "door",
+        "offset": 3315.4,
+        "width": 978.9,
+        "height": 2100,
+        "sill": 0,
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.822,
+        "open": false
+      },
+      {
+        "id": "ai-window-4",
+        "wallId": "ai-wall-4",
+        "type": "window",
+        "offset": 3204.9,
+        "width": 2273.7,
+        "height": 1500,
+        "sill": 900,
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.803
+      },
+      {
+        "id": "ai-door-5",
+        "wallId": "ai-wall-7",
+        "type": "door",
+        "offset": 2483.6,
+        "width": 900,
+        "height": 2100,
+        "sill": 0,
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "confidence": 0.801,
+        "open": true
+      }
+    ],
+    "columns": [],
+    "rooms": [
+      {
+        "id": "ai-room-1",
+        "name": "未命名区域 1",
+        "kind": "room",
+        "poly": [
+          [
+            505.3,
+            2905.3
+          ],
+          [
+            505.3,
+            3884.2
+          ],
+          [
+            3378.9,
+            3884.2
+          ],
+          [
+            3378.9,
+            2447.4
+          ],
+          [
+            1547.4,
+            2447.4
+          ],
+          [
+            1484.2,
+            2510.5
+          ],
+          [
+            1484.2,
+            2636.8
+          ],
+          [
+            1531.6,
+            2684.2
+          ],
+          [
+            1515.8,
+            2763.2
+          ],
+          [
+            1421.1,
+            2778.9
+          ],
+          [
+            1452.6,
+            2842.1
+          ],
+          [
+            1421.1,
+            2889.5
+          ],
+          [
+            1452.6,
+            2921.1
+          ],
+          [
+            726.3,
+            2936.8
+          ],
+          [
+            710.5,
+            2905.3
+          ]
+        ],
+        "mat": "tile800",
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "evidence": "enclosed-neural-walls",
+        "confidence": 0.958
+      },
+      {
+        "id": "ai-room-2",
+        "name": "未命名区域 2",
+        "kind": "room",
+        "poly": [
+          [
+            3694.7,
+            2447.4
+          ],
+          [
+            3615.8,
+            2494.7
+          ],
+          [
+            3600,
+            2636.8
+          ],
+          [
+            3663.2,
+            2652.6
+          ],
+          [
+            3647.4,
+            3015.8
+          ],
+          [
+            3568.4,
+            3031.6
+          ],
+          [
+            3568.4,
+            6568.4
+          ],
+          [
+            3600,
+            6821.1
+          ],
+          [
+            3568.4,
+            6947.4
+          ],
+          [
+            3568.4,
+            8747.4
+          ],
+          [
+            6457.9,
+            8763.2
+          ],
+          [
+            6473.7,
+            7973.7
+          ],
+          [
+            5589.5,
+            7973.7
+          ],
+          [
+            5447.4,
+            7878.9
+          ],
+          [
+            5447.4,
+            7815.8
+          ],
+          [
+            5589.5,
+            7752.6
+          ],
+          [
+            6473.7,
+            7752.6
+          ],
+          [
+            6473.7,
+            2447.4
+          ]
+        ],
+        "mat": "tile800",
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "evidence": "enclosed-neural-walls",
+        "confidence": 0.934
+      },
+      {
+        "id": "ai-room-3",
+        "name": "未命名区域 3",
+        "kind": "room",
+        "poly": [
+          [
+            505.3,
+            4089.5
+          ],
+          [
+            505.3,
+            8747.4
+          ],
+          [
+            3363.2,
+            8763.2
+          ],
+          [
+            3378.9,
+            4073.7
+          ]
+        ],
+        "mat": "tile800",
+        "reviewed": false,
+        "source": "local-cubicasa5k",
+        "evidence": "enclosed-neural-walls",
+        "confidence": 0.568
+      }
+    ]
+  },
+  "rooms": {
+    "ai-room-1": {
+      "name": "未命名区域 1",
+      "mat": "tile800",
+      "wallColor": "#f4f1eb"
+    },
+    "ai-room-2": {
+      "name": "客厅",
+      "mat": "antislip",
+      "wallColor": "#d9cbb7"
+    },
+    "ai-room-3": {
+      "name": "未命名区域 3",
+      "mat": "tile800",
+      "wallColor": "#f4f1eb"
+    }
+  },
+  "furniture": [
+    {
+      "id": "fmvh2gw4b18",
+      "type": "rug",
+      "name": "地毯",
+      "cx": 2170,
+      "cy": 6880,
+      "w": 2400,
+      "d": 1700,
+      "rot": 90,
+      "color": "#d9cbb8"
+    },
+    {
+      "id": "fmvh29r3v1",
+      "type": "photo_tv_cabinet",
+      "name": "米维卡轻奢美学 2 米电视柜",
+      "cx": 3782,
+      "cy": 6741,
+      "w": 2000,
+      "d": 450,
+      "h": 530,
+      "rot": 270,
+      "color": "#a7a397",
+      "assetId": "photo-asset-38efee6f-1730-4a56-aff2-9e6494faf439",
+      "elevation": 0
+    },
+    {
+      "id": "fmvh2b2yd3",
+      "type": "sofa",
+      "name": "双人沙发",
+      "cx": 6055,
+      "cy": 6809,
+      "w": 1700,
+      "d": 880,
+      "rot": 90,
+      "color": "#c3cbd6"
+    },
+    {
+      "id": "fmvh2bfix4",
+      "type": "plant",
+      "name": "绿植",
+      "cx": 4250,
+      "cy": 7480,
+      "w": 500,
+      "d": 500,
+      "rot": 0,
+      "color": "#a9c39b"
+    },
+    {
+      "id": "fmvh2c0mv6",
+      "type": "floorlamp",
+      "name": "落地灯",
+      "cx": 6270,
+      "cy": 5777,
+      "w": 450,
+      "d": 450,
+      "rot": 0,
+      "color": "#3d3a34"
+    },
+    {
+      "id": "fmvh2cn1d8",
+      "type": "washer",
+      "name": "洗衣机",
+      "cx": 6195,
+      "cy": 8327,
+      "w": 600,
+      "d": 600,
+      "rot": 90,
+      "color": "#e6ebee"
+    },
+    {
+      "id": "fmvh2d45k9",
+      "type": "toilet",
+      "name": "马桶",
+      "cx": 1943,
+      "cy": 2779,
+      "w": 400,
+      "d": 700,
+      "rot": 0,
+      "color": "#ffffff"
+    },
+    {
+      "id": "fmvh2d7n910",
+      "type": "shower",
+      "name": "淋浴房",
+      "cx": 958,
+      "cy": 3468,
+      "w": 990,
+      "d": 990,
+      "rot": 0,
+      "color": "#e4edf2"
+    },
+    {
+      "id": "fmvh2djbu11",
+      "type": "vanity",
+      "name": "浴室柜",
+      "cx": 2900,
+      "cy": 2699,
+      "w": 960,
+      "d": 540,
+      "rot": 0,
+      "color": "#eef1f3"
+    },
+    {
+      "id": "fmvh2e9xk12",
+      "type": "bed",
+      "name": "双人床 1.8m",
+      "cx": 1490,
+      "cy": 6885,
+      "w": 1800,
+      "d": 2000,
+      "rot": 270,
+      "color": "#c9d6df"
+    },
+    {
+      "id": "fmvh2efup13",
+      "type": "dresser",
+      "name": "梳妆台",
+      "cx": 750,
+      "cy": 5318,
+      "w": 1160,
+      "d": 520,
+      "rot": 270,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmvh2elny14",
+      "type": "wardrobe",
+      "name": "衣柜",
+      "cx": 1951,
+      "cy": 4361,
+      "w": 2860,
+      "d": 600,
+      "rot": 0,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmvh2flt416",
+      "type": "nightstand",
+      "name": "床头柜",
+      "cx": 710,
+      "cy": 8063,
+      "w": 440,
+      "d": 530,
+      "rot": 0,
+      "color": "#e8dccb"
+    },
+    {
+      "id": "fmvh2gq7v17",
+      "type": "plant",
+      "name": "绿植",
+      "cx": 760,
+      "cy": 8527.7,
+      "w": 500,
+      "d": 500,
+      "rot": 0,
+      "color": "#a9c39b"
+    },
+    {
+      "id": "fmvh31tuv20",
+      "type": "dryer",
+      "name": "烘干机",
+      "cx": 4760,
+      "cy": 4410,
+      "w": 600,
+      "d": 600,
+      "rot": 0,
+      "color": "#e6ebee"
+    }
+  ],
+  "assets": {
+    "photo-asset-38efee6f-1730-4a56-aff2-9e6494faf439": {
+      "id": "photo-asset-38efee6f-1730-4a56-aff2-9e6494faf439",
+      "kind": "glb",
+      "data": "data:model/gltf-binary;base64,AA=="
+    }
+  },
+  "catalogue": [],
+  "demolished": [],
+  "measures": [],
+  "source": null,
+  "calibration": {
+    "confirmed": false,
+    "method": "estimate"
+  },
+  "workflow": "structure",
+  "recognition": {
+    "method": "manual",
+    "message": "上传户型图片，或从空白画布开始描绘。"
+  }
+}

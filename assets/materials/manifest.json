@@ -1,0 +1,420 @@
+{
+  "provider": "ambientCG",
+  "author": "Lennart Demes / ambientCG contributors",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://docs.ambientcg.com/license/",
+  "downloadedAt": "2026-10-20T21:09:44.498Z",
+  "assets": [
+    {
+      "id": "Marble012",
+      "title": "Marble 012",
+      "tags": [
+        "012",
+        "12",
+        "bathroom",
+        "elegant",
+        "glossy",
+        "gray",
+        "grey",
+        "kitchen",
+        "light",
+        "marble",
+        "modern",
+        "natural",
+        "polished",
+        "smooth",
+        "stone",
+        "veined",
+        "white"
+      ],
+      "sourceDimensionsCm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "sourceUrl": "https://ambientcg.com/view?id=Marble012",
+      "downloadUrl": "https://ambientcg.com/get?file=Marble012_1K-JPG.zip",
+      "archiveBytes": 4672904,
+      "files": {
+        "Color": {
+          "path": "assets/materials/Marble012/Color.jpg",
+          "original": "Marble012_1K-JPG_Color.jpg",
+          "bytes": 1220876,
+          "sha256": "a34b55c889c6b3819d2c351b6409bfd0baf0a0a55b073441850627dfebcdcd1e"
+        },
+        "NormalGL": {
+          "path": "assets/materials/Marble012/NormalGL.jpg",
+          "original": "Marble012_1K-JPG_NormalGL.jpg",
+          "bytes": 342955,
+          "sha256": "2e9a56525ffbb7e80854b19985a5c921f91192698ea337f4834192479ba0063b"
+        },
+        "Roughness": {
+          "path": "assets/materials/Marble012/Roughness.jpg",
+          "original": "Marble012_1K-JPG_Roughness.jpg",
+          "bytes": 535814,
+          "sha256": "f7afd636d6cca0b470549959c514976186df58ac1013016b6c3919910a6d3a04"
+        }
+      }
+    },
+    {
+      "id": "Marble006",
+      "title": "Marble 006",
+      "tags": [
+        "6",
+        "black",
+        "dark",
+        "gray",
+        "grey",
+        "marble",
+        "stone"
+      ],
+      "sourceDimensionsCm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "sourceUrl": "https://ambientcg.com/view?id=Marble006",
+      "downloadUrl": "https://ambientcg.com/get?file=Marble006_1K-JPG.zip",
+      "archiveBytes": 4682587,
+      "files": {
+        "Color": {
+          "path": "assets/materials/Marble006/Color.jpg",
+          "original": "Marble006_1K-JPG_Color.jpg",
+          "bytes": 1239605,
+          "sha256": "39102057f5a518e0175bc0474e644546dd2a076d4999e1ec0c93523050ec22f4"
+        },
+        "NormalGL": {
+          "path": "assets/materials/Marble006/NormalGL.jpg",
+          "original": "Marble006_1K-JPG_NormalGL.jpg",
+          "bytes": 342803,
+          "sha256": "1a0f766d4a4bd1480790d9a1776a5736ecebef288bbcc945587f5120baf4eac2"
+        },
+        "Roughness": {
+          "path": "assets/materials/Marble006/Roughness.jpg",
+          "original": "Marble006_1K-JPG_Roughness.jpg",
+          "bytes": 517036,
+          "sha256": "2b29e5ed7e8f711efedaf42a0443615f947648eebb95fc2a37f0fde092debc27"
+        }
+      }
+    },
+    {
+      "id": "Travertine009",
+      "title": "Travertine 009",
+      "tags": [
+        "9",
+        "beige",
+        "light",
+        "marble",
+        "stone",
+        "travertine",
+        "white"
+      ],
+      "sourceDimensionsCm": {
+        "width": 120,
+        "height": 120,
+        "depth": 0
+      },
+      "sourceUrl": "https://ambientcg.com/view?id=Travertine009",
+      "downloadUrl": "https://ambientcg.com/get?file=Travertine009_1K-JPG.zip",
+      "archiveBytes": 3292870,
+      "files": {
+        "Color": {
+          "path": "assets/materials/Travertine009/Color.jpg",
+          "original": "Travertine009_1K-JPG_Color.jpg",
+          "bytes": 922573,
+          "sha256": "6561c87d92aef321aef4095fbcc5518cec4d711e642be6beaa90d13829e6cd2b"
+        },
+        "NormalGL": {
+          "path": "assets/materials/Travertine009/NormalGL.jpg",
+          "original": "Travertine009_1K-JPG_NormalGL.jpg",
+          "bytes": 332407,
+          "sha256": "635256a78537253a2d2bc5fef5fcda6e4e03349b960c57f15cf721b7cf5ba098"
+        },
+        "Roughness": {
+          "path": "assets/materials/Travertine009/Roughness.jpg",
+          "original": "Travertine009_1K-JPG_Roughness.jpg",
+          "bytes": 298778,
+          "sha256": "f4094c2149e257f4b6e17e5c5da70101fcbffaf0ce4016ab5d6aac7e45112e37"
+        }
+      }
+    },
+    {
+      "id": "Travertine004",
+      "title": "Travertine 004",
+      "tags": [
+        "4",
+        "brown",
+        "gray",
+        "marble",
+        "stone",
+        "travertine"
+      ],
+      "sourceDimensionsCm": {
+        "width": 120,
+        "height": 120,
+        "depth": 0
+      },
+      "sourceUrl": "https://ambientcg.com/view?id=Travertine004",
+      "downloadUrl": "https://ambientcg.com/get?file=Travertine004_1K-JPG.zip",
+      "archiveBytes": 3487181,
+      "files": {
+        "Color": {
+          "path": "assets/materials/Travertine004/Color.jpg",
+          "original": "Travertine004_1K-JPG_Color.jpg",
+          "bytes": 1051013,
+          "sha256": "0bf6e7bfd91144d8ed889bb860bd2779e93cf4465b6ddd6d6d9e304222f482d2"
+        },
+        "NormalGL": {
+          "path": "assets/materials/Travertine004/NormalGL.jpg",
+          "original": "Travertine004_1K-JPG_NormalGL.jpg",
+          "bytes": 332985,
+          "sha256": "87280dc285f984064ff032a4c52fa5daba8ef02b9dedd48e98292291fe7e2875"
+        },
+        "Roughness": {
+          "path": "assets/materials/Travertine004/Roughness.jpg",
+          "original": "Travertine004_1K-JPG_Roughness.jpg",
+          "bytes": 246921,
+          "sha256": "ea11172d0a310f8a60461aa317227bfd96cf2884906f134e1f54d75df188afbf"
+        }
+      }
+    },
+    {
+      "id": "Granite001A",
+      "title": "Granite 001 A",
+      "tags": [
+        "1",
+        "countertop",
+        "granite"
+      ],
+      "sourceDimensionsCm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "sourceUrl": "https://ambientcg.com/view?id=Granite001A",
+      "downloadUrl": "https://ambientcg.com/get?file=Granite001A_1K-JPG.zip",
+      "archiveBytes": 5151099,
+      "files": {
+        "Color": {
+          "path": "assets/materials/Granite001A/Color.jpg",
+          "original": "Granite001A_1K-JPG_Color.jpg",
+          "bytes": 2022816,
+          "sha256": "3df54e01319611b02ec6207e5afa3f468c77cf4af128dcf3f5ec3ed5df12de1b"
+        },
+        "NormalGL": {
+          "path": "assets/materials/Granite001A/NormalGL.jpg",
+          "original": "Granite001A_1K-JPG_NormalGL.jpg",
+          "bytes": 343771,
+          "sha256": "c1f32af1b5021db96f95a8241c8100777fdc0920b964837259b9fdd100714221"
+        },
+        "Roughness": {
+          "path": "assets/materials/Granite001A/Roughness.jpg",
+          "original": "Granite001A_1K-JPG_Roughness.jpg",
+          "bytes": 628377,
+          "sha256": "48f427fc3cb05c334da6e203e5dbb4ae54cb1eeeebeab568497b056aa1427070"
+        }
+      }
+    },
+    {
+      "id": "Granite002B",
+      "title": "Granite 002 B",
+      "tags": [
+        "2",
+        "countertop",
+        "granite"
+      ],
+      "sourceDimensionsCm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "sourceUrl": "https://ambientcg.com/view?id=Granite002B",
+      "downloadUrl": "https://ambientcg.com/get?file=Granite002B_1K-JPG.zip",
+      "archiveBytes": 7551091,
+      "files": {
+        "Color": {
+          "path": "assets/materials/Granite002B/Color.jpg",
+          "original": "Granite002B_1K-JPG_Color.jpg",
+          "bytes": 1461069,
+          "sha256": "3ab1539aa70521f702329c291589aca84bf36fc22de2049c229663404474f413"
+        },
+        "NormalGL": {
+          "path": "assets/materials/Granite002B/NormalGL.jpg",
+          "original": "Granite002B_1K-JPG_NormalGL.jpg",
+          "bytes": 1578046,
+          "sha256": "cf6a2e9d6fa6c7734a1457ba8b3a7135ff515062c189c3a437f62a86631e960d"
+        },
+        "Roughness": {
+          "path": "assets/materials/Granite002B/Roughness.jpg",
+          "original": "Granite002B_1K-JPG_Roughness.jpg",
+          "bytes": 642324,
+          "sha256": "c2134e7aa45e4858e89c91b99ebb0ce29e17c3522d55e26056267c050d15a0a9"
+        }
+      }
+    },
+    {
+      "id": "Terrazzo013",
+      "title": "Terrazzo 013",
+      "tags": [
+        "13",
+        "colorful",
+        "terrazzo",
+        "white"
+      ],
+      "sourceDimensionsCm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "sourceUrl": "https://ambientcg.com/view?id=Terrazzo013",
+      "downloadUrl": "https://ambientcg.com/get?file=Terrazzo013_1K-JPG.zip",
+      "archiveBytes": 5022480,
+      "files": {
+        "Color": {
+          "path": "assets/materials/Terrazzo013/Color.jpg",
+          "original": "Terrazzo013_1K-JPG_Color.jpg",
+          "bytes": 1023600,
+          "sha256": "d29e7faed63ea349ecaf61666dbb2ddfe90b34fa112b924b4e4e756ac496a3fa"
+        },
+        "NormalGL": {
+          "path": "assets/materials/Terrazzo013/NormalGL.jpg",
+          "original": "Terrazzo013_1K-JPG_NormalGL.jpg",
+          "bytes": 679114,
+          "sha256": "faa48614887a626bffaaa48f6e3b42e61c72099695edad6ece30d0d440effb62"
+        },
+        "Roughness": {
+          "path": "assets/materials/Terrazzo013/Roughness.jpg",
+          "original": "Terrazzo013_1K-JPG_Roughness.jpg",
+          "bytes": 466715,
+          "sha256": "314abffe72481cb7f3f225b14c91c6a9e33f987489162d9fec5a1519959bfb8e"
+        }
+      }
+    },
+    {
+      "id": "Concrete034",
+      "title": "Concrete 034",
+      "tags": [
+        "34",
+        "concrete",
+        "grey",
+        "light",
+        "plaster",
+        "smooth"
+      ],
+      "sourceDimensionsCm": {
+        "width": 110,
+        "height": 55,
+        "depth": 0
+      },
+      "sourceUrl": "https://ambientcg.com/view?id=Concrete034",
+      "downloadUrl": "https://ambientcg.com/get?file=Concrete034_1K-JPG.zip",
+      "archiveBytes": 3657575,
+      "files": {
+        "Color": {
+          "path": "assets/materials/Concrete034/Color.jpg",
+          "original": "Concrete034_1K-JPG_Color.jpg",
+          "bytes": 269501,
+          "sha256": "8ceb9186d990b31fce785e06fdc6974c160f1d27c43f6160266f164deba713aa"
+        },
+        "NormalGL": {
+          "path": "assets/materials/Concrete034/NormalGL.jpg",
+          "original": "Concrete034_1K-JPG_NormalGL.jpg",
+          "bytes": 821681,
+          "sha256": "e509eb9dfa978e780fbebfd2acacc2ce158b5b7ced722ddc0759039dd51e18ca"
+        },
+        "Roughness": {
+          "path": "assets/materials/Concrete034/Roughness.jpg",
+          "original": "Concrete034_1K-JPG_Roughness.jpg",
+          "bytes": 217708,
+          "sha256": "a4a9e39857a19afd23a778e5abf44fcdf6bd7f93918f1cf6878b41933e553511"
+        }
+      }
+    },
+    {
+      "id": "Plaster001",
+      "title": "Plaster 001",
+      "tags": [
+        "001",
+        "1",
+        "clean",
+        "matte",
+        "modern",
+        "outdoor",
+        "plaster",
+        "rough",
+        "solid",
+        "stucco",
+        "surface",
+        "wall",
+        "white"
+      ],
+      "sourceDimensionsCm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "sourceUrl": "https://ambientcg.com/view?id=Plaster001",
+      "downloadUrl": "https://ambientcg.com/get?file=Plaster001_1K-JPG.zip",
+      "archiveBytes": 7414156,
+      "files": {
+        "Color": {
+          "path": "assets/materials/Plaster001/Color.jpg",
+          "original": "Plaster001_1K-JPG_Color.jpg",
+          "bytes": 828790,
+          "sha256": "d3fe43282859ab7293ad41f2fa3c29f02df077e5bc326cf90a65cc588a4ac5a4"
+        },
+        "NormalGL": {
+          "path": "assets/materials/Plaster001/NormalGL.jpg",
+          "original": "Plaster001_1K-JPG_NormalGL.jpg",
+          "bytes": 2091491,
+          "sha256": "ea293c335a0b9243f0a825573b81304b8f99e60b2c067e493d0792adf96dfc72"
+        },
+        "Roughness": {
+          "path": "assets/materials/Plaster001/Roughness.jpg",
+          "original": "Plaster001_1K-JPG_Roughness.jpg",
+          "bytes": 367391,
+          "sha256": "6028dbe3cb2ea250eacf3fb87d2c4e5ae8c2a7ff10ecad7883c27d721f2f8e88"
+        }
+      }
+    },
+    {
+      "id": "PaintedPlaster017",
+      "title": "Painted Plaster 017",
+      "tags": [
+        "17",
+        "paint",
+        "painted",
+        "plaster",
+        "white"
+      ],
+      "sourceDimensionsCm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "sourceUrl": "https://ambientcg.com/view?id=PaintedPlaster017",
+      "downloadUrl": "https://ambientcg.com/get?file=PaintedPlaster017_1K-JPG.zip",
+      "archiveBytes": 4721132,
+      "files": {
+        "Color": {
+          "path": "assets/materials/PaintedPlaster017/Color.jpg",
+          "original": "PaintedPlaster017_1K-JPG_Color.jpg",
+          "bytes": 378542,
+          "sha256": "ed8a69a6437de9d41d2cf380f7e6a216232fc4754f256c3405985c857547ffef"
+        },
+        "NormalGL": {
+          "path": "assets/materials/PaintedPlaster017/NormalGL.jpg",
+          "original": "PaintedPlaster017_1K-JPG_NormalGL.jpg",
+          "bytes": 1115299,
+          "sha256": "1bef1887c10e1ce104be1a557e4dbd7634ef6d5ece6e3b4237dab2d0962f57fa"
+        },
+        "Roughness": {
+          "path": "assets/materials/PaintedPlaster017/Roughness.jpg",
+          "original": "PaintedPlaster017_1K-JPG_Roughness.jpg",
+          "bytes": 193304,
+          "sha256": "a83ecc2ba5b9d80bb9a27381f3389ccdb20c77ef6358b92f3d11455403d651d8"
+        }
+      }
+    }
+  ]
+}

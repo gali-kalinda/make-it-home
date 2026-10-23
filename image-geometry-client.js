@@ -1,0 +1,10 @@
+(function(){
+ async function generate(input,onProgress=()=>{},signal,endpoint='/api/furniture/model-from-crop'){
+  const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(input),signal});
+  const result=await SceneExtractionStream.read(response,onProgress);ImageGeometryCore.validate(result.geometry);
+  if(!['vision-image-parts-v1','deepseek-image-parts-v1'].includes(result.provenance?.method)||typeof result.provenance?.model!=='string'||!result.provenance.model||typeof result.provenance?.host!=='string'||!result.provenance.host||!/^[a-f0-9]{64}$/.test(result.provenance?.cropHash||'')||!/^[a-f0-9]{64}$/.test(result.provenance?.geometryHash||''))throw Error('模型来源校验未通过，未生成预设替代模型');
+  const data=Uint8Array.from(atob(input.image.split(',')[1]),c=>c.charCodeAt(0)),hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',data))].map(v=>v.toString(16).padStart(2,'0')).join('');if(hash!==result.provenance.cropHash)throw Error('模型与当前框选图片不匹配，请重新生成');const geometryHash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(ImageGeometryCore.validate(result.geometry)))))].map(v=>v.toString(16).padStart(2,'0')).join('');if(geometryHash!==result.provenance.geometryHash)throw Error('模型几何数据校验失败，请重新生成');if(input.contextImage){const context=Uint8Array.from(atob(input.contextImage.split(',')[1]),c=>c.charCodeAt(0)),contextHash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',context))].map(v=>v.toString(16).padStart(2,'0')).join('');if(contextHash!==result.provenance.contextImageHash)throw Error('模型原图上下文校验失败，请重新生成');}return result;
+ }
+ window.ImageFurnitureModel={generate,generateFromViews:(input,onProgress,signal)=>generate({...input,contextImage:input.source},onProgress,signal,'/api/furniture/model-from-three-views'),generatePhotoFromViews:(input,onProgress,signal)=>generate({...input,contextImage:input.source},onProgress,signal,'/api/furniture/photo-model-from-three-views')};
+ window.DeepSeekFurnitureModel=window.ImageFurnitureModel;
+})();

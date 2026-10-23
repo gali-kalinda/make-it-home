@@ -1,0 +1,8 @@
+body.plan-rendered main{background:#fafaf8}body.plan-rendered #plan{background:#fafaf8}
+.plan-style-buttons{gap:0!important;border:1px solid #e8e3db;border-radius:4px;padding:2px!important}.plan-style-buttons .btn{padding:5px 8px;font-size:10px}
+.plan-style-buttons .btn.on{background:#eee6db;color:#8b6745}
+body.plan-rendered:not(.structure-mode) #plan .room:hover{opacity:1}
+body.plan-rendered:not(.structure-mode) #plan .furn:hover{filter:drop-shadow(0 0 2px #b78b594d)}
+.plan-render-note{position:absolute;bottom:18px;left:18px;pointer-events:none;font-size:9px;letter-spacing:1px;color:#9b948a;background:#fafaf8d9;padding:6px 9px;border-radius:3px}
+body.m3d .plan-render-note,body.structure-mode .plan-render-note{display:none}
+body.plan-rendered #lib .library-plan{width:100%;height:100%}

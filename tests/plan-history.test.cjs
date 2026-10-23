@@ -1,0 +1,24 @@
+const assert=require('node:assert/strict'),H=require('../plan-history-core.js'),C=require('../core.js');
+const fixture=require('./fixtures/render-reconcile-plan.json');
+const copy=p=>JSON.parse(JSON.stringify(p));
+(async()=>{
+ const original=copy(fixture);original.assets={...original.assets,model:{id:'model',kind:'glb',data:'data:model/gltf-binary;base64,'+'A'.repeat(6*1024*1024)}};original.source={width:100,height:100,mmPerPixel:1,data:'data:image/png;base64,QUJD'};original.customFutureFeature={preserve:true};
+ const r=H.snapshot(original,' 客厅 · 木色 ',{id:'first',createdAt:'2026-10-21T10:00:00.000Z'});
+ assert.equal(r.meta.name,'客厅 · 木色');assert.equal(r.meta.furnitureCount,15);assert.equal(r.meta.roomCount,3);assert(r.meta.area>0);assert(r.meta.preview.startsWith('<svg'));assert.deepEqual(r.plan,original);
+ original.furniture[0].cx+=100;assert.notEqual(r.plan.furniture[0].cx,original.furniture[0].cx,'the saved layout is independent from edits');
+ const records=new Map();let failWrite=false,applied=0,current=copy(original);
+ const repo={put:async r=>{if(failWrite)throw Object.assign(Error('quota'),{name:'QuotaExceededError'});assert(!records.has(r.meta.id));records.set(r.meta.id,copy(r));},get:async id=>records.has(id)?copy(records.get(id)):null,list:async()=>[...records.values()].map(r=>copy(r.meta))};
+ const service=H.createService(repo,{capture:()=>current,validate:p=>C.validate(p),apply:p=>{applied++;current=copy(p);}});
+ const first=await service.save('<客厅>& "木色"',{id:'saved-1'});assert.equal(first.name,'<客厅>& "木色"');const saved=copy(current);current.furniture[0].rot=270;current.rooms['ai-room-2'].wallColor='#abcdef';const edited=copy(current);
+ assert.deepEqual((await service.get(first.id)).plan,saved,'source image, full 6 MB model, finishes and unknown plan metadata survive round-trip');
+ assert.equal((await service.list()).length,1);assert.deepEqual(current,edited,'viewing history never changes the editor');
+ failWrite=true;await assert.rejects(()=>service.restore(first.id),{name:'QuotaExceededError'});assert.equal(applied,0,'failed pre-restore backup prevents applying an old plan');assert.deepEqual(current,edited);assert.equal(service.busy,false);
+ failWrite=false;const restored=await service.restore(first.id);assert.equal(applied,1);assert.equal(current.furniture[0].rot,saved.furniture[0].rot);assert.equal(current.rooms['ai-room-2'].wallColor,saved.rooms['ai-room-2'].wallColor);assert.equal(current.assets.model.data,saved.assets.model.data);assert.equal(current.customFutureFeature.preserve,true);assert.equal(restored.backup.kind,'before-restore');assert.deepEqual((await service.get(restored.backup.id)).plan,edited,'the exact displaced plan is recoverable');assert.equal(records.size,2);
+ await assert.rejects(()=>service.restore('missing'),/没有找到/);assert.equal(records.size,2);
+ await repo.put({meta:{id:'bad',name:'broken'},plan:{}});await assert.rejects(()=>service.restore('bad'),/不完整/);assert.equal(applied,1);
+ const concurrent=service.save('one');await assert.rejects(()=>service.save('two'),/正在处理/);await concurrent;
+ assert.equal(H.escape('<img onerror="x">'), '&lt;img onerror=&quot;x&quot;&gt;');assert.equal(H.snapshot(fixture,' '.repeat(5)).meta.name,'未命名方案');assert.equal(H.snapshot(fixture,'x'.repeat(90)).meta.name.length,80);
+ assert(H.preview({structure:{walls:[],rooms:[]},furniture:[]}).includes('空白方案'));
+ const malicious=copy(fixture);malicious.furniture[0].color='\" onload=\"alert(1)';assert(!H.preview(malicious).includes('onload='));
+ console.log('Plan history passed: immutable full snapshots, 6 MB embedded models, source images, metadata and finishes, read-only previews, named versions, pre-restore backup, quota/missing/corrupt-record guards and concurrent-operation protection.');
+})().catch(e=>{console.error(e);process.exitCode=1;});

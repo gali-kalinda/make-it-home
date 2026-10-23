@@ -1,0 +1,6 @@
+Object.assign(window.View3D,{
+ projectRenderCandidate:(item,roomId)=>{if(!active||anim||['tv','curtain_drape','art_abstract'].includes(item.type))return null;const r=state.structure.rooms.find(r=>r.id===roomId);if(!r)return null;const [x,y,w,h]=item.box,rc=new THREE.Raycaster();rc.setFromCamera(new THREE.Vector2((x+w/2)*2-1,1-Math.min(.985,y+h)*2),camera);const p=new THREE.Vector3();if(!rc.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),-(r.elevation||0)/1000),p))return null;const q=[p.x*1000+OX,p.z*1000+OY];return PlanCore.inside(q,r.poly)?{cx:Math.round(q[0]),cy:Math.round(q[1]),rot:0,elevation:item.elevation||0}:null;},
+ focusRenderDesign:view=>{if(!active||!view)return;setMode('orbit');opt.cut=fullHeight();syncCutBtns();sync();fly=null;camera.fov=Math.max(35,Math.min(75,view.fov||FOV));camera.updateProjectionMatrix();const p=view.position,t=view.target;setPose(pose(new THREE.Vector3(wx(t[0]),M(t[1]),wz(t[2])),new THREE.Vector3(wx(p[0]),M(p[1]),wz(p[2]))));orbit.update();}
+});
+const renderDesignExit=window.View3D.exit;window.View3D.exit=async(...args)=>{if(camera){camera.fov=FOV;camera.updateProjectionMatrix();}return renderDesignExit(...args);};
+const renderDesignMode=setMode;setMode=function(mode){if(camera){camera.fov=FOV;camera.updateProjectionMatrix();}return renderDesignMode(mode);};window.View3D.setMode=setMode;

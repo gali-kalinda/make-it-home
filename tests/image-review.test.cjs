@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),core=require('../image-review-core.js');
+const entry=(id,cropHash='source-a',geometryHash='geometry-a',w=500)=>({id,assetId:'asset-'+id,name:'椅子',w,d:500,h:800,provenance:{cropHash,geometryHash}}),draft={entry:entry('new'),item:{id:'candidate-new'},signature:'s'};
+assert.equal(core.findImported(draft,[entry('old')]).id,'old','same source and geometry across sessions must not duplicate');
+assert.equal(core.findImported(draft,[entry('old','source-b')]),null,'same name is not identity');
+assert.equal(core.findImported({...draft,entry:entry('new','source-a','geometry-b')},[entry('old')]),null,'new generated geometry is importable');
+assert.equal(core.findImported({...draft,entry:entry('new','source-a','geometry-a',600)},[entry('old')]),null,'new dimensions are a new version');
+assert.equal(core.findImported({...draft,accepted:true,importedEntryId:'deleted'},[]),null,'removed library entries may be imported again');
+assert.equal(core.ready(draft,'s'),true);assert.equal(core.ready(draft,'changed'),false);
+for(const status of ['running','failed'])assert.equal(core.ready({...draft,generation:{status}},'s'),false,'old preview cannot be imported as a new failed version');
+const old={...draft},running={item:{id:'regen'},entry:entry('kept'),generation:{status:'running'},pinnedAt:10};
+assert.deepEqual(core.ordered([old,running]).map(v=>v.index),[1,0]);
+core.interrupted(running);assert.equal(running.entry.id,'kept');assert.equal(running.generation.status,'failed');assert.equal(core.ordered([old,running])[0].draft,running);
+const session={items:[{id:'missing-chair',name:'休闲椅'}],results:[],failures:[{id:'missing-chair',error:'Failed to fetch'}]};core.recoverFailures(session);core.recoverFailures(session);assert.equal(session.results.length,1);assert.equal(session.results[0].generation.status,'failed');assert.equal(session.results[0].generation.text,'Failed to fetch');
+console.log('image review identity, import eligibility and interrupted job tests passed');
