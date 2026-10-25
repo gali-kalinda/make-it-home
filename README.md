@@ -23,7 +23,7 @@ Make It Home 是一个在本机运行的 2D / 3D 家居布置工具。上传户�
 1. 在 GitHub 点击 **Code → Download ZIP**，解压整个文件夹。
 2. Windows：双击 `start.cmd`。
 3. macOS / Linux：在解压目录执行 `sh start.sh`。
-4. 脚本会在缺少依赖时执行 `npm ci`，再启动并尝试打开 `http://127.0.0.1:8787`。若浏览器未打开，手动访问该地址。
+4. 脚本会在缺少依赖时执行 `npm ci`，再启动服务并打开浏览器。默认使用 `http://127.0.0.1:8787`；端口被其他程序占用时自动尝试后续端口，实际地址会打印在终端。若浏览器未打开，请复制终端中的 `Open in your browser` 地址。
 
 也可以手动运行：
 
@@ -32,7 +32,9 @@ npm ci
 npm start
 ```
 
-停止时在终端按 Ctrl+C。端口占用时，PowerShell 执行 `$env:PORT=8792; npm start`；macOS / Linux 执行 `PORT=8792 npm start`，再打开对应地址。
+停止时在原服务终端按 Ctrl+C。重复双击 `start.cmd` 会打开同一份项目的已有服务，不会再次占用端口。服务只会复用同一安装目录的 Make It Home，不会结束其他程序。也可以指定起始端口：PowerShell 执行 `$env:PORT=8792; npm start`；macOS / Linux 执行 `PORT=8792 npm start`。
+
+如果旧版显示 `EADDRINUSE ... 127.0.0.1:8787`，表示启动失败，因为端口已占用；“按任意键继续”只会关闭报错窗口。请下载 1.0.1 或更新版本，解压后运行 `start.cmd`。换端口会使用独立的浏览器存储；已有项目建议先导出 JSON，恢复原端口后原来的浏览器数据仍可使用。
 
 不要直接双击 `index.html`：模块加载、文件读取与 AI 代理需要本机 HTTP 服务。这是带 Node.js 后端的本地应用，完整功能不能只靠 GitHub Pages 静态托管。当前服务仅监听本机地址，不用于直接部署到公网。
 

@@ -1,6 +1,6 @@
 {
   "name": "make-it-home",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Make It Home — editable 2D/3D home planning with optional AI",
   "scripts": {

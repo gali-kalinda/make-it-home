@@ -13,7 +13,9 @@ const {workflowStatus,generatePhotoViews,generatePhotoModel}=require('./photo-th
 const localAI=require('./local-ai-server.cjs');
 const {createVisionSettings,allowSettingsRequest}=require('./vision-settings-server.cjs');
 const {requestVisionJSON}=require('./vision-protocol.cjs');
-const ROOT=__dirname,PORT=Number(process.env.PORT||8787);
+const ROOT=__dirname;
+const {identity,listenOrReuse}=require('./startup-runtime.cjs');
+let PORT=Number(process.env.PORT||8787);
 // Optional server-only configuration. No credentials are returned to the browser.
 const visionSettings=createVisionSettings({filename:path.join(ROOT,'.local','vision-config.json')});
 const imageSettings=createImageSettings({filename:path.join(ROOT,'.local','image-edit-config.json')});
@@ -40,7 +42,8 @@ async function recognize(input,options={}){
  }
 }
 const server=http.createServer(async(req,res)=>{try{const url=new URL(req.url,'http://localhost');
-  if(url.pathname.startsWith('/api/')){const origin=req.headers.origin;if(origin&&!['http://localhost:'+PORT,'http://127.0.0.1:'+PORT].includes(origin))return json(res,403,{error:'不接受跨站请求'});
+  if(url.pathname.startsWith('/api/')){const activePort=server.address()?.port;if(activePort)PORT=activePort;const origin=req.headers.origin;if(origin&&!['http://localhost:'+PORT,'http://127.0.0.1:'+PORT].includes(origin))return json(res,403,{error:'不接受跨站请求'});
+    if(url.pathname==='/api/app-instance'&&req.method==='GET')return json(res,200,identity(ROOT));
     const profileMatch=url.pathname.match(/^\/api\/settings\/vision-profiles\/(step5|deepseek|glm)(?:\/(test|activate))?$/);
     if(profileMatch){if(!allowSettingsRequest(req,PORT))return json(res,403,{error:'请在本机设置中操作'});const settings=visionProfiles[profileMatch[1]],action=profileMatch[2];if(req.method==='GET'&&!action)return json(res,200,settings.publicState());if(req.method==='POST'&&action==='test')return json(res,200,await settings.test(await body(req)));if(req.method==='POST'&&action==='activate'){const value=settings.current();if(!value.key)throw Error('请先保存这组接口和密钥');return json(res,200,visionSettings.save(value));}if(req.method==='POST'&&!action)return json(res,200,settings.save(await body(req)));if(req.method==='DELETE'&&!action)return json(res,200,settings.clear());return json(res,405,{error:'不支持此操作'});}
     if(['/api/settings/image-edit','/api/settings/image-edit/test'].includes(url.pathname)){if(!allowSettingsRequest(req,PORT))return json(res,403,{error:'请在本机设置中操作'});if(req.method==='GET'&&!url.pathname.endsWith('/test'))return json(res,200,imageSettings.publicState());if(req.method==='POST'&&url.pathname.endsWith('/test')){const c=imageSettings.draft(await body(req)),r=await editImage({image:'data:image/png;base64,'+require('./vision-test-image.cjs').testImage().toString('base64'),prompt:'把参考图中的红色方块呈现在白色背景中，直接返回图片，不要文字。'},c,{testModelOutput:true});return json(res,200,{ok:true,message:'已实际返回图片，图像编辑接口可用。',...r});}if(req.method==='POST')return json(res,200,imageSettings.save(await body(req)));if(req.method==='DELETE')return json(res,200,imageSettings.clear());return json(res,405,{error:'不支持此操作'});}
@@ -84,6 +87,11 @@ const server=http.createServer(async(req,res)=>{try{const url=new URL(req.url,'h
   if(decoded.startsWith('/local-ai/'))return json(res,404,{error:'文件不存在'});
   const stat=fs.statSync(file);if(!stat.isFile())throw Error('文件不存在');res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});if(req.method==='HEAD')res.end();else fs.createReadStream(file).pipe(res);
 }catch(e){if(e.code==='ENOENT')return json(res,404,{error:'文件不存在'});json(res,e.status||400,{error:e.name==='TimeoutError'?'视觉服务超时，请重试或使用手动描绘':e.message,...(e.diagnostics?{diagnostics:e.diagnostics}:{}),...(e.status&&e.code?{code:e.code}:{})});}});
-server.listen(PORT,'127.0.0.1',()=>{console.log('Make It Home: http://127.0.0.1:'+PORT);});
+listenOrReuse(server,{root:ROOT,port:PORT,onBusy:port=>console.log('Port '+port+' is occupied; trying the next port...')}).then(result=>{
+ PORT=result.port;const url='http://127.0.0.1:'+PORT;
+ console.log((result.reused?'Make It Home is already running: ':'Make It Home: ')+url);
+ if(process.send){process.send({type:'ready',url,reused:result.reused},()=>{if(process.connected)process.disconnect();});}
+ if(result.reused)localAI.close();
+}).catch(error=>{console.error('Make It Home could not start: '+error.message);localAI.close();process.exitCode=1;});
 server.on('close',()=>localAI.close());
 module.exports={server,recognize};

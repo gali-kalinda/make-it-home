@@ -7,4 +7,7 @@ if errorlevel 1 (
   exit /b 1
 )
 node scripts/start.cjs
-if errorlevel 1 pause
+if errorlevel 1 (
+  echo Startup failed. Read the error above. Pressing a key only closes this window.
+  pause
+)
