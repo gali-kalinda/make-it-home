@@ -1,5 +1,5 @@
 const fs=require('node:fs'),path=require('node:path'),{spawnSync}=require('node:child_process');
-const DEFAULT_BASE='https://api.siliconflow.cn/v1',DEFAULT_MODEL='Qwen/Qwen3-VL-32B-Instruct';
+const DEFAULT_BASE='',DEFAULT_MODEL='';
 const {testImage}=require('./vision-test-image.cjs');
 const {serviceError}=require('./vision-errors.cjs');
 const {requestVisionJSON}=require('./vision-protocol.cjs');

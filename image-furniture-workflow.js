@@ -3,7 +3,6 @@
  let controller=null,photoDraft=null;
  const sourceText='每件模型实时调用当前图片模型，根据当前图片生成部件。先对照原图预览，确认外观后再入库；单张图片无法还原被遮挡的细节。';
  document.querySelector('label[for="visionModel"]').textContent='模型名称';
- $('#visionModel').insertAdjacentHTML('afterend','<small>支持 Step 5 Preview、DeepSeek 等兼容接口。此接口统一用于户型与家具识别、模型部件生成，需要模型支持图片输入和 JSON 输出。</small>');
  $('#sceneExtractDialog>.muted').textContent=sourceText;
  $('#generateSceneBatch').textContent='用当前模型生成所选模型';
  $('#sceneExtractDialog').addEventListener('close',()=>controller?.abort());
