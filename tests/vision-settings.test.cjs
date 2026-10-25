@@ -10,10 +10,14 @@ const {testImage,crc32}=require('../vision-test-image.cjs'),{inflateSync}=requir
   assert.equal(offset,png.length);assert.deepEqual(chunks,['IHDR','IDAT','IEND']);assert.equal(decoded,64*193);
   const settings=createVisionSettings({filename,env:{},codec,fetchImpl:async(url,request)=>{seen={url,request};return {ok:true,json:async()=>({choices:[{message:{content:'{"color":"red","shape":"square"}'},finish_reason:'stop'}]})};}});
   assert.equal(settings.publicState().configured,false);
+  assert.equal(settings.publicState().base,'');assert.equal(settings.publicState().model,'');
+  const managed=createVisionSettings({filename:path.join(dir,'managed.json'),env:{VISION_BASE_URL:'https://custom.example/v1',VISION_MODEL:'custom-vision',VISION_API_KEY:secret},codec});
+  assert.equal(managed.publicState().base,'https://custom.example/v1');assert.equal(managed.publicState().model,'custom-vision');assert(managed.publicState().configured);
   settings.save({base:'https://api.siliconflow.cn/v1/',model:'Qwen/Qwen3-VL-32B-Instruct',key:secret});
   const disk=fs.readFileSync(filename,'utf8');assert(!disk.includes(secret));assert(!JSON.stringify(settings.publicState()).includes(secret));
   assert.equal(settings.publicState().configured,true);
   const reopened=createVisionSettings({filename,env:{VISION_API_KEY:'wrong-env-key'},codec});assert.equal(reopened.current().key,secret);
+  assert.equal(reopened.publicState().base,'https://api.siliconflow.cn/v1');assert.equal(reopened.publicState().model,'Qwen/Qwen3-VL-32B-Instruct');
   settings.save({...settings.publicState(),key:''});assert.equal(settings.current().key,secret);
   assert.throws(()=>settings.save({base:'https://example.com/v1',model:'model',key:''}),/重新填写/);
   await settings.test({...settings.publicState(),key:''});assert.equal(seen.url,'https://api.siliconflow.cn/v1/chat/completions');assert.equal(seen.request.headers.Authorization,'Bearer '+secret);
@@ -25,6 +29,7 @@ const {testImage,crc32}=require('../vision-test-image.cjs'),{inflateSync}=requir
   }
   settings.clear();assert.equal(settings.publicState().configured,false);assert.equal(createVisionSettings({filename,env:{VISION_API_KEY:'env-key'},codec}).current().key,'');
   fs.writeFileSync(filename,'{"version":1,"protected":"corrupt"}');const corrupt=createVisionSettings({filename,env:{VISION_API_KEY:secret},codec});assert(corrupt.publicState().loadError);assert(!corrupt.publicState().configured);
+  assert.equal(corrupt.publicState().base,'');assert.equal(corrupt.publicState().model,'');
   assert.throws(()=>normalize({base:'https://user:pass@example.com/v1',model:'m',key:'k'}));assert.throws(()=>normalize({base:'http://example.com/v1',model:'m',key:'k'}));assert.throws(()=>normalize({base:'https://example.com/v1/chat/completions',model:'m',key:'k'}));
   const good={method:'POST',headers:{host:'127.0.0.1:8787',origin:'http://127.0.0.1:8787','content-type':'application/json','x-studio-settings':'1'}};
   assert(allowSettingsRequest(good,8787));for(const headers of [{origin:'https://evil.example'},{host:'evil.example:8787'},{'x-studio-settings':''},{origin:''},{'content-type':'text/plain'}])assert(!allowSettingsRequest({...good,headers:{...good.headers,...headers}},8787));
